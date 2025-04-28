@@ -36,7 +36,7 @@ class PostListCreateView(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = PostSerializer(data=request.data, context={'request': request})
+        serializer = PostSerializer(data=request.data, files=request.FILES, context={'request': request})
         if serializer.is_valid():
             serializer.save(user=request.user)
             return Response(serializer.data, status=201)
