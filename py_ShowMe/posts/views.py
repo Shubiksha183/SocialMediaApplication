@@ -6,12 +6,14 @@ from django.db.models import Q
 from .models import Post
 from .serializers import PostSerializer
 from userProfile.models import Profile
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import status
 
 from follows.models import Follow  
 
 class PostListCreateView(APIView):
     permission_classes = [IsAuthenticated]
+    parser_classes = [MultiPartParser, FormParser]
 
     def get(self, request):
         user = request.user
@@ -39,8 +41,9 @@ class PostListCreateView(APIView):
         serializer = PostSerializer(data=request.data, files=request.FILES, context={'request': request})
         if serializer.is_valid():
             serializer.save(user=request.user)
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 class PostDetailView(APIView):
