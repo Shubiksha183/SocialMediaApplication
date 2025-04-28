@@ -20,7 +20,8 @@ CORS_ALLOW_CREDENTIALS = True  # Enable cookies with CORS requests
 CORS_ALLOWED_ORIGINS = ["https://teal-salamander-80389d.netlify.app"]
 
 # In case of any CSRF issues, set trusted origins
-CSRF_TRUSTED_ORIGINS = ["https://teal-salamander-80389d.netlify.app"]
+CSRF_TRUSTED_ORIGINS = ["https://teal-salamander-80389d.netlify.app",
+                        "https://showme-backend-uus3.onrender.com"]
 
 
 # ✅ INSTALLED APPS
@@ -123,6 +124,7 @@ SECURE_HSTS_PRELOAD = True
 SESSION_COOKIE_SECURE = True  # Make sure to set True in production
 CSRF_COOKIE_SECURE = True     
 SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
 
