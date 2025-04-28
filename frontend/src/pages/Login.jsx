@@ -37,7 +37,7 @@ export default function LoginPage() {
   const handleGoogleLoginSuccess = async (credentialResponse) => {
     const { credential } = credentialResponse;
     try {
-      const res = await axios.post('http://localhost:8000/api/google-login/', {
+      const res = await axios.post('https://showme-backend-uus3.onrender.com/api/google-login/', {
         token: credential,
       });
       login(res.data);

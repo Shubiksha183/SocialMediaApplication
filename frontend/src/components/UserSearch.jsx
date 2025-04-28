@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { searchUsers } from '../services/search';
 
-const baseURL = 'http://127.0.0.1:8000';
+const baseURL = 'https://showme-backend-uus3.onrender.com';
 
 const UserSearch = () => {
   const [query, setQuery] = useState('');

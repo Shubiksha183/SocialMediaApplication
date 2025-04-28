@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchProfile } from '../services/profile';
 
-const baseURL = 'http://127.0.0.1:8000';
+const baseURL = 'https://showme-backend-uus3.onrender.com';
 
 export default function ProfileIcon() {
   const [pic, setPic] = useState(null);

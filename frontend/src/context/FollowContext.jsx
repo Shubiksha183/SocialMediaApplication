@@ -23,7 +23,7 @@ export const FollowContextProvider = ({ children }) => {
 
     const fetchFollowData = async () => {
       try {
-        const res = await axios.get('http://127.0.0.1:8000/follows/my-follows/', {
+        const res = await axios.get('https://showme-backend-uus3.onrender.com/follows/my-follows/', {
           headers: {
             Authorization: `Bearer ${token}`,
           },

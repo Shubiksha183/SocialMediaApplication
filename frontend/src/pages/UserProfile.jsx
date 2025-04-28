@@ -6,7 +6,7 @@ import { sendFollowRequest, cancelFollowRequest, unfollowUser } from '../service
 import { AuthContext } from '../context/AuthContext';
 import { useFollowContext } from '../context/FollowContext';
 
-const baseURL = 'http://127.0.0.1:8000';
+const baseURL = 'https://showme-backend-uus3.onrender.com';
 
 export default function UserProfile() {
   const { username } = useParams();

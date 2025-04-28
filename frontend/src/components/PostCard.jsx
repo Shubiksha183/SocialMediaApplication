@@ -4,7 +4,7 @@ import { useFollowContext } from '../context/FollowContext';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-const baseURL = 'http://127.0.0.1:8000';
+const baseURL = 'https://showme-backend-uus3.onrender.com';
 
 const PostCard = ({ post, currentUserId }) => {
   const [ownPost, setOwnPost] = useState(false);

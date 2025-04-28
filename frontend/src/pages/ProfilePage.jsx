@@ -8,7 +8,7 @@ import { AuthContext } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import { XMarkIcon } from '@heroicons/react/24/outline'; // Import the cross icon
 
-const baseURL = 'http://127.0.0.1:8000';
+const baseURL = 'https://showme-backend-uus3.onrender.com';
 
 export default function ProfilePage() {
   const [profile, setProfile] = useState(null);

@@ -1,7 +1,7 @@
 // src/services/axiosInstance.js
 import axios from 'axios';
 
-const baseURL = 'http://127.0.0.1:8000';
+const baseURL = 'https://showme-backend-uus3.onrender.com';
 
 const axiosInstance = axios.create({ baseURL });
 

@@ -4,7 +4,7 @@ import { fetchFollows, acceptFollowRequest, sendFollowRequest } from '../service
 import toast from 'react-hot-toast';
 import { useFollowContext } from '../context/FollowContext';
 
-const baseURL = 'http://127.0.0.1:8000';
+const baseURL = 'https://showme-backend-uus3.onrender.com';
 
 export default function Follows() {
   const { refreshFriends, triggerRefresh } = useFollowContext();
