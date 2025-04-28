@@ -17,10 +17,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 CORS_ALLOW_ALL_ORIGINS = False  # Restrict access to specific origins
 CORS_ALLOW_CREDENTIALS = True  # Enable cookies with CORS requests
 
-CORS_ALLOWED_ORIGINS = ["https://teal-salamander-80389d.netlify.app/login"]
+CORS_ALLOWED_ORIGINS = ["https://teal-salamander-80389d.netlify.app"]
 
 # In case of any CSRF issues, set trusted origins
-CSRF_TRUSTED_ORIGINS = ["https://teal-salamander-80389d.netlify.app/login"]
+CSRF_TRUSTED_ORIGINS = ["https://teal-salamander-80389d.netlify.app"]
 
 
 # ✅ INSTALLED APPS
@@ -145,6 +145,23 @@ SIMPLE_JWT = {
 
 # ✅ SITE ID
 SITE_ID = 1
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
 
 # ✅ GOOGLE SOCIAL LOGIN
 SOCIALACCOUNT_PROVIDERS = {
