@@ -12,7 +12,7 @@ export const NotificationProvider = ({ userId, children }) => {
     useEffect(() => {
         if (!userId) return;
 
-        const ws = new WebSocket(`ws://localhost:8000/ws/notifications/${userId}/`);
+        const ws = new WebSocket(`wss://showme-backend-uus3.onrender.com/ws/notifications/${userId}/`);
 
         ws.onopen = () => {
             console.log("WebSocket connected");

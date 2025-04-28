@@ -10,7 +10,7 @@ export default function NotificationsPage() {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/notifications/notifications/', {
+                const response = await axios.get('https://showme-backend-uus3.onrender.com/notifications/notifications/', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                     },

@@ -24,7 +24,7 @@ const Chat = ({ otherUsername }) => {
     }, [messages]);
 
     useEffect(() => {
-        const socketUrl = `ws://localhost:8000/ws/chat/${otherUsername}/?token=${token}`;
+        const socketUrl = `wss://showme-backend-uus3.onrender.com/ws/chat/${otherUsername}/?token=${token}`;
         const socket = new WebSocket(socketUrl);
         socketRef.current = socket;
 
