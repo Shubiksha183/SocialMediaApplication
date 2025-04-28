@@ -11,21 +11,16 @@ load_dotenv(dotenv_path=BASE_DIR / '.env.production')
 
 DJANGO_ENV = os.getenv("DJANGO_ENV", "production")
 print("DJANGO_ENV =", DJANGO_ENV)
-
+DEBUG = False
+SECRET_KEY = os.environ.get("SECRET_KEY")
 # ✅ CORS CONFIG
 CORS_ALLOW_ALL_ORIGINS = False  # Restrict access to specific origins
 CORS_ALLOW_CREDENTIALS = True  # Enable cookies with CORS requests
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Frontend URL
-    "http://127.0.0.1:5173",  # In case you're testing with a different address
-]
+CORS_ALLOWED_ORIGINS = ["https://teal-salamander-80389d.netlify.app/login"]
 
 # In case of any CSRF issues, set trusted origins
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-]
+CSRF_TRUSTED_ORIGINS = ["https://teal-salamander-80389d.netlify.app/login"]
 
 
 # ✅ INSTALLED APPS
@@ -77,6 +72,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # Ensure this is at the top
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -90,11 +86,11 @@ MIDDLEWARE = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'ShowMe'),
-        'USER': os.getenv('DB_USER', 'postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'root123'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
@@ -119,19 +115,16 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # # ✅ SECURITY HEADERS
-# SECURE_BROWSER_XSS_FILTER = True
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-# SECURE_HSTS_SECONDS = 31536000  # 1 year
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# SECURE_HSTS_PRELOAD = True
-# SESSION_COOKIE_SECURE = True  # Make sure to set True in production
-# CSRF_COOKIE_SECURE = True     # Make sure to set True in production
-#   # Enforce HTTPS redirection in production
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SESSION_COOKIE_SECURE = True  # Make sure to set True in production
+CSRF_COOKIE_SECURE = True     
+SECURE_SSL_REDIRECT = True
 
-# # Disable SSL redirect in local environments
-
-
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "*").split(",")
 
 # ✅ JWT CONFIG
 REST_USE_JWT = True
@@ -169,7 +162,7 @@ SOCIALACCOUNT_PROVIDERS = {
 # ✅ ELASTICSEARCH
 ELASTICSEARCH_DSL = {
     'default': {
-        'hosts': os.getenv("ELASTICSEARCH_HOST", "http://localhost:9200")
+        'hosts': os.getenv("ELASTICSEARCH_HOST", "https://rdq734g0kt:4txqslycua@finestcoder-search-4736577677.ap-southeast-2.bonsaisearch.net:443")
     },
 }
 
