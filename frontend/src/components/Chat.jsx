@@ -96,7 +96,11 @@ const Chat = ({ otherUsername }) => {
             const chatMessage = {
                 content: message,
                 temp_id: tempId,
+                sender: username,
+                timestamp: Date.now()
             };
+            setMessages(prevMessages => [...prevMessages, chatMessage]);
+
             sentMessageIds.current.push(tempId);
             socketRef.current.send(JSON.stringify(chatMessage));
             setMessage('');
