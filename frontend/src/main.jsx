@@ -12,7 +12,7 @@ import { NotificationProvider } from './context/NotificationContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId="524371104998-ep4u64k0hh08niem4ed0sgldq5e88g4b.apps.googleusercontent.com">
+    <GoogleOAuthProvider clientId="524371104998-256f7rloe5gtbb7ho5qmrbbf99jc8hr1.apps.googleusercontent.com">
       <BrowserRouter>
         <Toaster position="top-right" />
         <AuthProvider>
